@@ -39,12 +39,10 @@ component should be in its own directory, have its own .tsx file, its own
 .scss file, and any other files that are necessary (e.g. typings file, 
 extraneous methods, etc.).
 
-##### Common Components
-Our common components are project **agnostic**, and can be used across any 
+**Common components** are project **agnostic**, and can be used across any 
 project across the organization.
 
-##### Specific Components
-Specific components are aware of the project and would need configuration to 
+**Specific components** are aware of the project and would need configuration to 
 move them out of the this specific project.
 
 #### 2. Data
@@ -87,7 +85,6 @@ The two available Routers is the Browser Router and the Socket Router.
 #### 3. Globals
 These hold project **agnostic** miscellaneous data, including our global SCSS
 config files.
-
 
 ## Setup
 
