@@ -1,5 +1,5 @@
 
-//Consumer Imports
+/* Consumer Imports */
 import ExampleConsumer from "../Example/Consumer";
 
 /*
@@ -12,13 +12,13 @@ import ExampleConsumer from "../Example/Consumer";
 
 export const SOCKET_ACTIONS: any = {
 
-    //Socket Actions
+    /* Socket Actions */
     example: 'example',
 };
 
 
 export const SOCKET_CALLBACKS: any = {
 
-    //Socket Callbacks
+    /* Socket Callbacks */
     example: ExampleConsumer.onCreateOne,
 };
