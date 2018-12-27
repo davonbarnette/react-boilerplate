@@ -1,0 +1,45 @@
+import React, {Component} from 'react';
+import {observer} from "mobx-react";
+
+import './styles.scss';
+
+import ItemsList from "../../../common/ItemsList/ItemsList";
+import {ItemsListItemType} from "../../../common/ItemsList/Types";
+import AppActions from "../../../../data/App/Actions";
+import {FIXED_COMPONENT_TYPES, MODALS_BY_ID} from "../../../../data/App/Types";
+import AppStore from "../../../../data/App/Store";
+import { {{~pascalCase componentName~}} Type} from "../../../../data/{{pascalCase componentName}}/Types";
+import {{pascalCase componentName}}ListItem from "./ListItem";
+
+interface {{pascalCase componentName}}ListProps{
+    {{camelCase componentName}}Id?:string
+    className?:string,
+}
+
+class {{pascalCase componentName}}List extends Component<{{pascalCase componentName}}ListProps> {
+
+    onAddClick = () => {
+        AppActions.openFixedComponent(FIXED_COMPONENT_TYPES.MODAL, MODALS_BY_ID.EXAMPLE_MODAL)
+    };
+
+    get items(){
+        let {{camelCase componentName}}s = AppStore.{{camelCase componentName}}.all;
+        if (!{{camelCase componentName}}s) return undefined;
+
+        return {{camelCase componentName}}s.map(({{camelCase componentName}}:{{pascalCase componentName}}Type, index:number) => {
+            const { uuid, name } = {{camelCase componentName}};
+            let selected = this.props.{{camelCase componentName}}Id === uuid;
+            return {
+                key:uuid,
+                value:name,
+                component: <{{pascalCase componentName}}ListItem key={uuid} {{camelCase componentName}}Id={uuid} selected={selected}/>,
+            } as ItemsListItemType;
+        });
+    }
+
+    render(){
+        return <ItemsList itemName='{{pascalCase componentName}}' onAddClick={this.onAddClick} items={this.items}/>
+    }
+}
+
+export default observer({{pascalCase componentName}}List);

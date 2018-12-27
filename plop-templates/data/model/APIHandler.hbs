@@ -1,0 +1,34 @@
+import axios from 'axios'
+
+export default class {{pascalCase modelName }}API {
+
+    static async getAll{{pascalCase modelName }}(){
+        let url = {{pascalCase modelName }}APIRoutes.{{camelCase modelName }}Base;
+        await axios.get(url);
+    }
+
+    static async get{{pascalCase modelName }}({{camelCase modelName }}Id:string){
+        let url = {{pascalCase modelName}}APIRoutes.get{{pascalCase modelName}}ById({{camelCase modelName}}Id);
+        await axios.get(url);
+    }
+
+    static async {{camelCase modelName }}OnUploadProgress({{camelCase modelName }}Id:string, data:any, onUploadProgress?:(progressEvent:any) => void){
+        let url = {{pascalCase modelName}}APIRoutes.get{{pascalCase modelName }}ById({{camelCase modelName}}Id);
+        await axios({ method:'post', url, data, onUploadProgress});
+    }
+
+}
+
+export class {{pascalCase modelName}}APIRoutes {
+
+    static base = '/api/{{snakeCase modelName}}';
+
+    static get {{camelCase modelName}}Base(){
+        return `${ {{~pascalCase modelName~}} APIRoutes.base}`
+    }
+
+    static get{{pascalCase modelName}}ById({{camelCase modelName}}Id:string){
+        return `${ {{~pascalCase modelName~}} APIRoutes.{{camelCase modelName}}Base}/${ {{~camelCase modelName~}} Id}`
+    }
+
+}

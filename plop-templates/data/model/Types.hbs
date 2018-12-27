@@ -1,0 +1,25 @@
+export interface {{pascalCase modelName}}Type {
+    uuid: string,
+    name:string,
+}
+
+export interface Create{{pascalCase modelName}}RequestArgs {
+    name:string,
+    uuid:string,
+}
+
+export interface Create{{pascalCase modelName}}ResponseArgs extends {{pascalCase modelName}}Type {
+
+}
+
+export interface Update{{pascalCase modelName}}ResponseArgs extends {{pascalCase modelName}}Type {
+
+}
+
+export interface Delete{{pascalCase modelName}}ResponseArgs {
+    uuid: string,
+}
+
+export interface Query{{pascalCase modelName}}ResponseArgs extends {{pascalCase modelName}}Type {
+
+}

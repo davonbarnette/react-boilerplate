@@ -1,0 +1,37 @@
+import React, {Component} from 'react';
+import {observer} from "mobx-react";
+import * as Icon from 'react-feather';
+import './styles.scss';
+import {RouteComponentProps, withRouter} from "react-router";
+import Tabs from "../../../common/Tabs/Tabs";
+import {SingleTab} from "../../../common/Tabs/types";
+import BrowserRouter, {BrowserRoutes} from "../../../../data/Routers/BrowserRouter";
+
+interface {{pascalCase componentName}}TabsProps extends RouteComponentProps{
+    {{camelCase componentName}}Id:string
+    className?:string,
+}
+
+class {{pascalCase componentName}}Tabs extends Component<{{pascalCase componentName}}TabsProps> {
+    render(){
+        const { {{~camelCase componentName~}} Id, location, className } = this.props;
+        const { pathname } = location;
+        return <Tabs tabs={TabsObject({{camelCase componentName}}Id, pathname)} className={className}/>
+    }
+}
+
+export default withRouter(observer({{pascalCase componentName}}Tabs));
+
+const TabsObject = ({{camelCase componentName}}Id:string,pathname:string):SingleTab[] => {
+    return [
+        {
+            label: '{{pascalCase componentName}} Tab',
+            icon: (color: string) => <Icon.Image color={color} size={18}/>,
+            onClick: (e: MouseEvent) => {
+                e.stopPropagation();
+                BrowserRouter.push(BrowserRoutes.{{camelCase componentName}});
+            },
+            selected: pathname.indexOf(BrowserRoutes.{{camelCase componentName}}) !== -1
+        },
+    ]
+};

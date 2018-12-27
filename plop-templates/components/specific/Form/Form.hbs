@@ -1,0 +1,56 @@
+import React, {Component} from 'react';
+import {observer} from "mobx-react";
+
+import './styles.scss';
+
+import {{pascalCase componentName}}Actions from "../../../../data/{{pascalCase componentName}}/Actions";
+import {ValidationObject} from "../../../../global/managers/Validator";
+import {Flex} from "../../../common/Flex/Flex";
+import Field from "../../../common/Field/Field";
+import { {{~pascalCase componentName~}} Validation} from "../../../../data/{{pascalCase componentName}}/ValidationSchemas";
+import Button from "../../../common/Button/Button";
+import AppActions from "../../../../data/App/Actions";
+import {FIXED_COMPONENT_TYPES} from "../../../../data/App/Types";
+
+interface {{pascalCase componentName}}FormState {
+    [key:string]:string|null,
+}
+
+class {{pascalCase componentName}}Form extends Component<any, {{pascalCase componentName}}FormState> {
+
+    state:{{pascalCase componentName}}FormState = {
+        name:null,
+    };
+
+    onSubmitClick = () => {
+        const { name } = this.state;
+        {{pascalCase componentName}}Actions.createOne(name!);
+        AppActions.closeFixedComponent(FIXED_COMPONENT_TYPES.MODAL);
+    };
+
+    onInputChange = (id:string, value:string, validationObject:ValidationObject|null) => {
+        if (validationObject && !validationObject.isValid) this.setState({[id]:null});
+        else this.setState({[id]:value});
+    };
+
+    get disabled(){
+        const { name } = this.state;
+        return !name || name === '';
+    }
+
+    render(){
+        return(
+            <Flex className='{{snakeCase componentName}}-form' flexDirection='column'>
+                <section className='{{snakeCase componentName}}-form-content'>
+                    <Field id='name' label='Name' validation={ {{~pascalCase componentName~}} Validation.name} className='field'
+                       required onChange={this.onInputChange}/>
+                </section>
+                <section className='submit'>
+                    <Button className='button' enabled={!this.disabled} onClick={this.onSubmitClick}>SUBMIT</Button>
+                </section>
+            </Flex>
+        )
+    }
+}
+
+export default observer({{pascalCase componentName}}Form);

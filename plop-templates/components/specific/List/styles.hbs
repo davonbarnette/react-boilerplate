@@ -1,0 +1,30 @@
+@import '../../../../global/scss/config';
+
+.{{snakeCase componentName}}-list-item {
+
+  @include flex(row, flex-start, center);
+  @include pad-box(12px 24px);
+  @include font(14px, 600, 0em, $light-gray);
+  transition: all 0.1s ease-in;
+
+  &.unselected{
+    &:hover{
+      cursor:pointer;
+      color:#7b7b7b;
+    }
+  }
+
+  &.selected{
+    background:$light-blue-300;
+    color:$light-blue;
+  }
+
+  & .name {
+
+  }
+
+  & .arrow-right{
+    margin-left:auto;
+  }
+
+}

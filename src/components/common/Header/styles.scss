@@ -1,0 +1,54 @@
+@import '../../../global/scss/config';
+
+.header-component {
+  @include flex(row, space-between, center);
+  @include pad-box(18px 24px);
+  @include border(none none solid none);
+  background: white;
+  width: 100%;
+
+  .left-nav {
+    @include font(24px, 300, 0em, #505050);
+    line-height:1em;
+    .second{
+      font-weight:600;
+    }
+  }
+
+  .right-nav {
+    @include font(12px, 300, 0.2em, $medium-gray);
+    margin-left:auto;
+  }
+}
+
+.navigate-to {
+  @include flex(row, flex-start, center);
+  transition: all 0.3s;
+  margin-right: 48px;
+  cursor:pointer;
+
+
+  &:last-of-type{
+    @include border(none none none solid);
+    margin-right:0;
+    padding: 0 0 0 48px;
+  }
+
+  &.selected {
+    &:hover {
+      cursor:default;
+    }
+
+    & > .text {
+      color: #505050;
+      font-weight: 700;
+    }
+  }
+
+  .text {
+    @include font(14px, 500, 0.05em, #cccccc);
+    line-height:1em;
+    margin-left: 12px;
+    transition: all 0.3s;
+  }
+}

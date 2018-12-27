@@ -1,0 +1,37 @@
+import React, {Component} from 'react';
+import {observer} from "mobx-react";
+import cx from 'classnames';
+import * as Icon from 'react-feather';
+
+import './styles.scss';
+
+import BrowserRouter, {BrowserRoutes} from "../../../../data/Routers/BrowserRouter";
+import AppStore from "../../../../data/App/Store";
+
+interface {{pascalCase componentName}}ListItemProps {
+    {{camelCase componentName}}Id:string,
+    selected?:boolean,
+}
+
+class {{pascalCase componentName}}ListItem extends Component<{{pascalCase componentName}}ListItemProps, any> {
+
+    on{{pascalCase componentName}}ListItemClick = () => {
+        const { {{~camelCase componentName~}}Id, selected } = this.props;
+        if (!selected) BrowserRouter.push(BrowserRoutes.get{{pascalCase componentName}}ById({{camelCase componentName}}Id));
+    };
+
+    render(){
+        const { {{~camelCase componentName~}}Id, selected } = this.props;
+        let {{camelCase componentName}} = AppStore.{{camelCase componentName}}.getById({{camelCase componentName}}Id);
+        if (!{{camelCase componentName}}) return null;
+
+        return (
+            <div className={cx('{{snakeCase componentName}}-list-item', { unselected: !selected, selected })} onClick={this.on{{pascalCase componentName}}ListItemClick}>
+                <div className='name'>{ {{~camelCase componentName~}} .name}</div>
+                {selected && <Icon.ChevronRight className='arrow-right' size={18}/>}
+            </div>
+        )
+    }
+}
+
+export default observer({{pascalCase componentName}}ListItem);

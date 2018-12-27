@@ -1,0 +1,13 @@
+import {Create{{pascalCase modelName}}RequestArgs} from "./Types";
+import uuid from 'uuid/v1';
+import {{pascalCase modelName}}Consumer from "./Consumer";
+
+export default class {{pascalCase modelName}} {
+
+    static createOne(name:string){
+        let args:Create{{pascalCase modelName}}RequestArgs = { name, uuid:uuid() };
+
+        // Example of consumer taking in the response from this request.
+        {{pascalCase modelName}}Consumer.onCreateOne(args);
+    }
+}

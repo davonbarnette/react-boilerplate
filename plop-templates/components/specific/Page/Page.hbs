@@ -1,0 +1,50 @@
+import React, {Component} from 'react';
+import {observer} from "mobx-react";
+import {Redirect, Route, RouteComponentProps, Switch, withRouter} from "react-router";
+
+import './styles.scss';
+
+import AppStore from "../../../../data/App/Store";
+import {Flex} from "../../../common/Flex/Flex";
+import {Scrollable} from "../../../common/Scrollable/Scrollable";
+import ContentHeader from "./ContentHeader";
+
+
+interface {{pascalCase componentName}}PageProps extends RouteComponentProps<{ {{~camelCase componentName~}} Id:string}> {
+
+}
+
+class {{pascalCase componentName}}Page extends Component<{{pascalCase componentName}}PageProps, any> {
+
+    get content(){
+        const { {{~camelCase componentName~}} Id } = this.props.match.params;
+        let {{camelCase componentName}} = AppStore.{{camelCase componentName}}.getById({{camelCase componentName}}Id);
+        if (!{{camelCase componentName}}) return null;
+
+        return (
+            <Flex className='{{camelCase componentName}}-content' flexDirection='column'>
+                <ContentHeader {{camelCase componentName}}Id={ {{~camelCase componentName~}} Id}/>
+                <Scrollable scrollY>
+                    <Switch>
+                        {/*
+                            Some Router Content...
+                        */}
+                    </Switch>
+                </Scrollable>
+            </Flex>
+        )
+    }
+
+    render(){
+        if (!AppStore.{{camelCase componentName}}) return null;
+        const { {{~camelCase componentName~}} Id } = this.props.match.params;
+
+        return(
+            <section className='{{snakeCase componentName}}-page'>
+                {this.content}
+            </section>
+        )
+    }
+}
+
+export default withRouter(observer({{pascalCase componentName}}Page));

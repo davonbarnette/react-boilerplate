@@ -1,0 +1,42 @@
+import React, {Component} from 'react';
+import {observer} from "mobx-react";
+
+import './styles.scss';
+
+import Tabs from "./Tabs";
+import AppStore from "../../../../data/App/Store";
+import {Flex} from "../../../common/Flex/Flex";
+
+interface {{pascalCase componentName}}ContentHeaderProps {
+    {{camelCase componentName}}Id:string,
+}
+
+class {{pascalCase componentName}}ContentHeader extends Component<{{pascalCase componentName}}ContentHeaderProps, any> {
+
+    render(){
+        if (!AppStore.{{camelCase componentName}}) return null;
+        const { {{~camelCase componentName~}} Id } = this.props;
+        if (!{{camelCase componentName}}Id) return null;
+        let {{camelCase componentName}} = AppStore.{{camelCase componentName}}.getById({{camelCase componentName}}Id);
+        if (!{{camelCase componentName}}) return null;
+        return(
+            <Flex className='{{camelCase componentName}}-content-header'>
+                <section className='header'>
+                    <div className='header-content'>
+                        <div className='left'>
+                            <div className='{{snakeCase componentName}}-name'>{ {{~camelCase componentName~}} .name}</div>
+                        </div>
+                        <div className='right'>
+
+                        </div>
+                    </div>
+                </section>
+                <section className='tabs-container'>
+                    <Tabs className='{{snakeCase componentName}}-header-tabs' {{camelCase componentName}}Id={ {{~camelCase componentName~}} Id}/>
+                </section>
+            </Flex>
+        )
+    }
+}
+
+export default observer({{pascalCase componentName}}ContentHeader);

@@ -1,0 +1,58 @@
+@import '../../../../global/scss/config';
+
+.example-page{
+  @include flex(row, flex-start, flex-start);
+  @include max-size;
+  background:$secondary-background-color;
+
+  .example-content{
+    @include max-size;
+
+    &-header{
+      @include flex(column, flex-start, flex-start);
+      @include font(24px, 600, 0, $dark-gray);
+      @include border(none none solid none);
+      background:white;
+      .header {
+        @include flex(row, center, center);
+        @include pad-box(24px);
+        @include border(none none solid none);
+        background: white;
+        position: relative;
+        width: 100%;
+        .header-content {
+          @include flex(row, space-between, center);
+          @include scale-max-content-width;
+          .left {
+            .example-name {
+              @include font(36px, 700, 0, $dark-gray);
+            }
+          }
+          .right {
+
+          }
+        }
+      }
+      .tabs-container{
+        @include flex(row, center, center);
+        @include pad-box(12px 24px);
+        width:100%;
+        .example-header-tabs {
+          @include scale-max-content-width;
+        }
+      }
+    }
+
+    .status-container {
+      @include pad-box(24px 24px 12px 24px);
+      background:$secondary-background-color;
+      .status {
+        @include pad-box(24px);
+        @include box-shadow-1;
+        border-radius:5px;
+        background:white;
+      }
+    }
+  }
+
+}

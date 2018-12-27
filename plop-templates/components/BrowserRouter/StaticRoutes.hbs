@@ -1,0 +1,12 @@
+    static get {{camelCase componentName}}(){
+        return `${BrowserRoutes.BASE}/${BrowserRoutes.EXAMPLE}`;
+    }
+    static get {{camelCase componentName}}ByIdParam(){
+        // pre-pending a ":" tells React Router that we are considering that option a parameter. Appending a "?" tells
+        // it that parameter is optional.
+
+        return `${BrowserRoutes. {{~camelCase componentName~}} }/:${BrowserRoutes.{{constantCase componentName}}_PARAM}?`;
+    }
+    static get{{pascalCase componentName}}ById({{camelCase componentName}}Id:string){
+        return `${BrowserRoutes.BASE}/${BrowserRoutes. {{~constantCase componentName~}} }/${ {{~camelCase componentName~}} Id}`;
+    }
