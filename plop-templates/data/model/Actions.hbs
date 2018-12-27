@@ -2,7 +2,7 @@ import {Create{{pascalCase modelName}}RequestArgs} from "./Types";
 import uuid from 'uuid/v1';
 import {{pascalCase modelName}}Consumer from "./Consumer";
 
-export default class {{pascalCase modelName}} {
+export default class {{pascalCase modelName}}Actions {
 
     static createOne(name:string){
         let args:Create{{pascalCase modelName}}RequestArgs = { name, uuid:uuid() };
