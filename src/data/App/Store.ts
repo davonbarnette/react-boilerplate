@@ -5,7 +5,7 @@ import ExampleActions from "../Example/Actions";
 
 class AppStoreClass {
 
-    //Data Types
+    /* Data Types */
     example:    BaseMapManager<string, ExampleType> = new BaseMapManager('uuid');
 
     drawer?:    string;
@@ -23,7 +23,7 @@ class AppStoreClass {
 }
 
 decorate(AppStoreClass,{
-    // Data Decorators
+    /* Data Decorators */
     example:    observable,
 
     drawer:     observable,
