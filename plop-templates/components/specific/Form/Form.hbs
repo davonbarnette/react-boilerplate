@@ -41,7 +41,7 @@ class {{pascalCase componentName}}Form extends Component<any, {{pascalCase compo
     render(){
         return(
             <Flex className='{{snakeCase componentName}}-form' flexDirection='column'>
-                <section className='{{snakeCase componentName}}-form-content'>
+                <section className='{{snakeCase componentName}}-form content'>
                     <Field id='name' label='Name' validation={ {{~pascalCase componentName~}} Validation.name} className='field'
                        required onChange={this.onInputChange}/>
                 </section>
